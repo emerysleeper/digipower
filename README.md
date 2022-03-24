@@ -30,3 +30,11 @@ Database contents (do note that passwords are stored in hashed form in the db it
 }
 	
 	
+	
+To start docker-compose and get both of container up and running:
+docker-compose up -d --build
+
+
+To run tests after that:
+docker-compose exec web pytest
+	

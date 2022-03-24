@@ -1,5 +1,10 @@
 from fastapi import FastAPI
-from . import router
+
+#relative import because of pytest
+if __name__ == 'main':
+    import router
+else:
+    from app import router
 
 
 app = FastAPI()

@@ -20,6 +20,13 @@ class Connection(object):
     def commit(self):
         self.connection.commit()
 
+    # def create_test_table(self):
+    #     sqlite_create_table_query = '''CREATE TABLE users (
+    #                                         id INTEGER PRIMARY KEY,
+    #                                         username TEXT NOT NULL unique,
+    #                                         hashed_password text NOT NULL);'''
+    #     self.execute(sqlite_create_table_query)
+
     def get_user(self, login):
         select_query = f"""SELECT username, hashed_password FROM users WHERE username='{login}'"""
         self.execute(select_query)
@@ -35,7 +42,6 @@ class Connection(object):
         self.execute(insert_query)
         self.commit()
         print('New cache created')
-
     #Exception handling and exiting
     def __exit__(self, ext_type, exc_value, traceback):
         self.cur.close()

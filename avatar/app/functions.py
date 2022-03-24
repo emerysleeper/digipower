@@ -1,4 +1,11 @@
-import pagan
+import os
+
+if os.environ.get('IS_CONTAINER', False):
+    from . import pagan
+else:
+    import pagan
+
+
 
 
 def creation(input_string):

@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import bcrypt
 
 
@@ -9,7 +9,9 @@ class Login(BaseModel):
     password: str
 
 class ImgString(BaseModel):
-    img_string: str
+    img_string: str = Field(
+        None, title="The string for image generation", min_length=3, max_length=40
+    )
 
 
 def hash_password(password):
